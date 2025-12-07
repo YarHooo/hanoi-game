@@ -1,16 +1,53 @@
-# React + Vite
+# Hanoi Game - Лабораторна робота №1
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Реалізація каркаса застосунку гри **«Ханойські вежі»** 
 
-Currently, two official plugins are available:
+## ЛР1
+Створити структуру React-застосунку без бізнес-логіки:
+- правильний розподіл на сторінки
+- правильний розподіл на компоненти
+- статичні плейсхолдери 
+- базові стилі та компоненти
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Структура проєкту
+src/
+components/
+Header.jsx
+Header.css
+PrimaryButton.jsx
+PrimaryButton.css
 
-## React Compiler
+pages/
+StartPage.jsx
+GamePage.jsx
+ResultsPage.jsx
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+game/
+GameBoard.jsx
+GameBoard.css
 
-## Expanding the ESLint configuration
+App.jsx
+App.css
+main.jsx
+index.css
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## 🧩 Реалізовано
+
+### 3 сторінки:
+- StartPage - старт застосунку
+- GamePage - сторінка з ігровим полем (плейсхолдер)
+- ResultsPage - плейсхолдер результатів
+
+### Компоненти:
+- Header - спільний для всіх сторінок
+- PrimaryButton - універсальна кнопка
+- GameBoard - статичний каркас поля для гри
+
+### Інше:
+- Навігація між сторінками через `useState`
+- Базові стилі
+- Повністю без бізнес-логіки 
+
+
+
