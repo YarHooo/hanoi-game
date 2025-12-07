@@ -5,11 +5,14 @@ import { useHanoiGame } from "../game/useHanoiGame.js";
 import { useGameSettings } from "../game/GameSettingsContext.jsx";
 import FinishModal from "../components/FinishModal.jsx";
 import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addResult } from "../store/resultsSlice.js";
 
 function GamePage() {
   const { settings } = useGameSettings();
   const navigate = useNavigate();
   const { userId } = useParams();
+  const dispatch = useDispatch();
 
   const {
     towers,
@@ -22,12 +25,29 @@ function GamePage() {
 
   const [round, setRound] = useState(1);
   const [showModal, setShowModal] = useState(false);
+  const [resultSaved, setResultSaved] = useState(false);
 
   useEffect(() => {
     if (isFinished) {
       setShowModal(true);
+
+      if (!resultSaved) {
+        dispatch(
+          addResult({
+            userId,
+            diskCount: settings.diskCount,
+            difficulty: settings.difficulty,
+            speed: settings.speed,
+            moves,
+            round,
+          })
+        );
+        setResultSaved(true);
+      }
+    } else {
+      setResultSaved(false);
     }
-  }, [isFinished]);
+  }, [isFinished, resultSaved, dispatch, userId, settings, moves, round]);
 
   const handleRestartSameRound = () => {
     resetGame();
