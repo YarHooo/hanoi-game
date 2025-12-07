@@ -1,25 +1,32 @@
 import React from "react";
 import PrimaryButton from "../components/PrimaryButton.jsx";
+import { useNavigate, useParams } from "react-router-dom";
 
-function ResultsPage({ onRestart, onBackToStart }) {
+function ResultsPage() {
+  const navigate = useNavigate();
+  const { userId } = useParams();
+
   return (
     <section className="page">
       <h2>Результати гри</h2>
       <p>
-        ///////
       </p>
 
       <p>
-        Наразі це лише плейсхолдер без реальної бізнес-логіки, відповідно до
-        вимог ЛР1.
+       плейсхолдер сторінки результатів. Навігація між сторінками
+        реалізована за допомогою React Router і динамічного параметра
+        <code> userId </code> у шляху.
       </p>
 
       <div className="page-actions">
-        <PrimaryButton onClick={onRestart}>
+        <PrimaryButton onClick={() => navigate(`/${userId}/game`)}>
           Повторити гру
         </PrimaryButton>
 
-        <button className="secondary-button" onClick={onBackToStart}>
+        <button
+          className="secondary-button"
+          onClick={() => navigate(`/${userId}/start`)}
+        >
           На старт
         </button>
       </div>

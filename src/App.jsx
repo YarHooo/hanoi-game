@@ -1,42 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "./components/Header.jsx";
-
 import StartPage from "./pages/StartPage.jsx";
 import GamePage from "./pages/GamePage.jsx";
 import ResultsPage from "./pages/ResultsPage.jsx";
-
 import "./App.css";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
-  const [page, setPage] = useState("start");
-
-  let content = null;
-
-  if (page === "start") {
-    content = <StartPage onStart={() => setPage("game")} />;
-  } else if (page === "game") {
-    content = (
-      <GamePage
-        onFinish={() => setPage("results")}
-        onBackToStart={() => setPage("start")}
-      />
-    );
-  } else if (page === "results") {
-    content = (
-      <ResultsPage
-        onRestart={() => setPage("game")}
-        onBackToStart={() => setPage("start")}
-      />
-    );
-  }
-
   return (
     <div className="app-root">
-      {/* Спільна шапка на всіх сторінках */}
       <Header />
+      <main className="app-main">
+        <Routes>
+          {/* редірект з / на /user-1/start */}
+          <Route path="/" element={<Navigate to="/user-1/start" replace />} />
 
-      {/* Сюди підставляються сторінки */}
-      <main className="app-main">{content}</main>
+          {/* динамічний userId у шляху */}
+          <Route path="/:userId/start" element={<StartPage />} />
+          <Route path="/:userId/game" element={<GamePage />} />
+          <Route path="/:userId/results" element={<ResultsPage />} />
+        </Routes>
+      </main>
     </div>
   );
 }

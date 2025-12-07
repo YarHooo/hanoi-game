@@ -4,9 +4,13 @@ import PrimaryButton from "../components/PrimaryButton.jsx";
 import { useHanoiGame } from "../game/useHanoiGame.js";
 import { useGameSettings } from "../game/GameSettingsContext.jsx";
 import FinishModal from "../components/FinishModal.jsx";
+import { useNavigate, useParams } from "react-router-dom";
 
-function GamePage({ onFinish, onBackToStart }) {
+function GamePage() {
   const { settings } = useGameSettings();
+  const navigate = useNavigate();
+  const { userId } = useParams();
+
   const {
     towers,
     selectedTower,
@@ -65,7 +69,10 @@ function GamePage({ onFinish, onBackToStart }) {
       />
 
       <div className="page-actions">
-        <button className="secondary-button" onClick={onBackToStart}>
+        <button
+          className="secondary-button"
+          onClick={() => navigate(`/${userId}/start`)}
+        >
           На старт
         </button>
 
@@ -73,7 +80,7 @@ function GamePage({ onFinish, onBackToStart }) {
           Скинути гру
         </PrimaryButton>
 
-        <PrimaryButton onClick={onFinish}>
+        <PrimaryButton onClick={() => navigate(`/${userId}/results`)}>
           Перейти до результатів
         </PrimaryButton>
       </div>

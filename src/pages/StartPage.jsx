@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useGameSettings } from "../game/GameSettingsContext.jsx";
+import { useNavigate, useParams } from "react-router-dom";
 
-//для yup
 const schema = yup.object({
   diskCount: yup
     .number()
@@ -24,8 +24,10 @@ const schema = yup.object({
     .required("Обовʼязкове поле"),
 });
 
-function StartPage({ onStart }) {
+function StartPage() {
   const { settings, updateSettings } = useGameSettings();
+  const navigate = useNavigate();
+  const { userId } = useParams();
 
   const {
     register,
@@ -42,16 +44,15 @@ function StartPage({ onStart }) {
       diskCount: Number(data.diskCount),
       speed: Number(data.speed),
     };
-
     updateSettings(normalized);
-    onStart(); 
+    navigate(`/${userId}/game`);
   };
 
   return (
     <section className="page">
       <h2>Старт</h2>
       <p>
-        Стартова сторінка &laquo;Ханойські вежі&raquo;. 
+        Стартова сторінка гри &laquo;Ханойські вежі&raquo;
       </p>
 
       <form className="settings-form" onSubmit={handleSubmit(onSubmit)}>
