@@ -1,0 +1,78 @@
+.app-root {
+  min-height: 100vh;
+  padding: 24px 32px;
+  background-color: #0f172a;
+  color: #e5e7eb;
+  font-family: Arial, sans-serif;
+}
+
+.app-header {
+  margin-bottom: 24px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 32px;
+  color: #3b82f6;
+}
+
+.app-subtitle {
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+.app-main {
+  display: flex;
+  justify-content: center;
+}
+
+/* Базова розмітка сторінки */
+.page {
+  width: 100%;
+  max-width: 960px;
+}
+
+.page h2 {
+  margin-top: 0;
+}
+
+.page p {
+  font-size: 14px;
+  color: #e5e7eb;
+}
+
+/* Кнопки */
+.primary-button,
+.secondary-button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.primary-button {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.primary-button:hover {
+  opacity: 0.9;
+}
+
+.secondary-button {
+  background-color: #111827;
+  color: #e5e7eb;
+  border: 1px solid #4b5563;
+}
+
+.secondary-button:hover {
+  background-color: #020617;
+}
+
+.page-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+}

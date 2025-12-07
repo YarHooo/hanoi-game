@@ -1,0 +1,116 @@
+.gameboard {
+  width: 100%;
+  max-width: 900px;
+  background: #111827;
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.gameboard-title {
+  margin: 0 0 8px 0;
+}
+
+.gameboard-info {
+  margin: 0 0 12px 0;
+  color: #e5e7eb;
+  font-size: 14px;
+}
+
+/* Контейнер для трьох стрижнів */
+.towers {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* Окремий стрижень */
+.tower {
+  flex: 1;
+  text-align: center;
+  border-radius: 16px;
+  padding: 10px 8px;
+  background: linear-gradient(180deg, #111827, #020617);
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  border: 1px solid #334155;
+}
+
+.tower-label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #e5e7eb;
+}
+
+/* Внутрішня зона стрижня */
+.tower-area {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  padding-bottom: 8px;
+}
+
+/* Вертикальний стрижень */
+.tower-pole {
+  position: absolute;
+  bottom: 16px;
+  width: 6px;
+  height: 80%;
+  background-color: #1f2937;
+  border-radius: 999px;
+  z-index: 0;
+}
+
+/* Горизонтальна основа */
+.tower-base {
+  position: absolute;
+  bottom: 8px;
+  width: 80%;
+  height: 8px;
+  background-color: #1f2937;
+  border-radius: 999px;
+  z-index: 0;
+}
+
+/* Контейнер для дисків */
+.tower-disks {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Базовий стиль диска */
+.disk {
+  height: 24px;
+  border-radius: 999px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(15, 23, 42, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0b1120;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+/* Кольори дисків: велика — червона, середня — жовта, мала — зелена */
+.disk--size-3 {
+  background-color: #ef4444;
+}
+
+.disk--size-2 {
+  background-color: #eab308;
+}
+
+.disk--size-1 {
+  background-color: #22c55e;
+}

@@ -1,0 +1,16 @@
+.header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 32px;
+  color: #3b82f6;
+}
+
+.header-subtitle {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #9ca3af;
+}
