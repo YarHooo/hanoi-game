@@ -17,14 +17,12 @@
   font-size: 14px;
 }
 
-/* Контейнер для трьох стрижнів */
 .towers {
   display: flex;
   gap: 16px;
   margin-bottom: 16px;
 }
 
-/* Окремий стрижень */
 .tower {
   flex: 1;
   text-align: center;
@@ -44,7 +42,6 @@
   color: #e5e7eb;
 }
 
-/* Внутрішня зона стрижня */
 .tower-area {
   position: relative;
   flex: 1;
@@ -56,7 +53,6 @@
   padding-bottom: 8px;
 }
 
-/* Вертикальний стрижень */
 .tower-pole {
   position: absolute;
   bottom: 16px;
@@ -67,7 +63,6 @@
   z-index: 0;
 }
 
-/* Горизонтальна основа */
 .tower-base {
   position: absolute;
   bottom: 8px;
@@ -78,7 +73,6 @@
   z-index: 0;
 }
 
-/* Контейнер для дисків */
 .tower-disks {
   position: relative;
   z-index: 1;
@@ -88,7 +82,6 @@
   gap: 6px;
 }
 
-/* Базовий стиль диска */
 .disk {
   height: 24px;
   border-radius: 999px;
@@ -102,7 +95,6 @@
   font-size: 12px;
 }
 
-/* Кольори дисків: велика — червона, середня — жовта, мала — зелена */
 .disk--size-3 {
   background-color: #ef4444;
 }
@@ -113,4 +105,10 @@
 
 .disk--size-1 {
   background-color: #22c55e;
+}
+
+.tower--selected {
+  outline: 2px solid #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.8),
+    0 12px 25px rgba(0, 0, 0, 0.6);
 }

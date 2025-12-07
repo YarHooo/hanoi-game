@@ -1,19 +1,24 @@
 import React from "react";
 import "./GameBoard.css";
 
-const initialTowers = [[3, 2, 1], [], []];
-
-function GameBoard() {
+function GameBoard({ towers, selectedTower, onTowerClick }) {
   return (
     <div className="gameboard">
       <h3 className="gameboard-title">Поле гри</h3>
       <p className="gameboard-info">
-        Тут відображається візуальне поле гри &laquo;Ханойські вежі&raquo;.
+         &laquo;Ханойські вежі&raquo;.
+        Логіка переміщення винесена в кастомний хук
       </p>
 
       <div className="towers">
-        {initialTowers.map((tower, index) => (
-          <div key={index} className="tower">
+        {towers.map((tower, index) => (
+          <div
+            key={index}
+            className={
+              "tower" + (selectedTower === index ? " tower--selected" : "")
+            }
+            onClick={() => onTowerClick(index)}
+          >
             <div className="tower-label">Стержень {index + 1}</div>
 
             <div className="tower-area">
