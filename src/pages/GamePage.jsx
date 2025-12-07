@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import GameBoard from "../game/GameBoard.jsx";
 import PrimaryButton from "../components/PrimaryButton.jsx";
 import { useHanoiGame } from "../game/useHanoiGame.js";
+import { useGameSettings } from "../game/GameSettingsContext.jsx";
+import FinishModal from "../components/FinishModal.jsx";
 
 function GamePage({ onFinish, onBackToStart }) {
+  const { settings } = useGameSettings();
   const {
     towers,
     selectedTower,
@@ -11,14 +14,43 @@ function GamePage({ onFinish, onBackToStart }) {
     isFinished,
     handleTowerClick,
     resetGame,
-  } = useHanoiGame(3);
+  } = useHanoiGame(settings.diskCount);
+
+  const [round, setRound] = useState(1);
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    if (isFinished) {
+      setShowModal(true);
+    }
+  }, [isFinished]);
+
+  const handleRestartSameRound = () => {
+    resetGame();
+    setShowModal(false);
+  };
+
+  const handleNextRound = () => {
+    setRound((prev) => prev + 1);
+    resetGame();
+    setShowModal(false);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <section className="page">
       <h2>Основна сторінка гри</h2>
       <p>
-        Логіка переміщення дисків реалізована
-        за допомогою кастомного хука <code>useHanoiGame</code>.
+        Налаштування гри:
+        <br />
+        Кількість дисків: <strong>{settings.diskCount}</strong>, складність:{" "}
+        <strong>{settings.difficulty}</strong>, швидкість:{" "}
+        <strong>{settings.speed}</strong>
+        <br />
+        Поточний раунд: <strong>{round}</strong>
       </p>
 
       <p>
@@ -42,9 +74,19 @@ function GamePage({ onFinish, onBackToStart }) {
         </PrimaryButton>
 
         <PrimaryButton onClick={onFinish}>
-          Перейти до результатів (плейсхолдер)
+          Перейти до результатів
         </PrimaryButton>
       </div>
+
+      {showModal && (
+        <FinishModal
+          moves={moves}
+          round={round}
+          onRestart={handleRestartSameRound}
+          onNextRound={handleNextRound}
+          onClose={handleCloseModal}
+        />
+      )}
     </section>
   );
 }

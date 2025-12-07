@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const DEFAULT_DISK_COUNT = 3;
 
 function createInitialTowers(diskCount = DEFAULT_DISK_COUNT) {
   const firstTower = [];
   for (let i = diskCount; i >= 1; i--) {
-    firstTower.push(i);
+    firstTower.push(i); 
   }
   return [firstTower, [], []];
 }
@@ -16,11 +16,19 @@ export function useHanoiGame(diskCount = DEFAULT_DISK_COUNT) {
   const [moves, setMoves] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
 
+  useEffect(() => {
+    setTowers(createInitialTowers(diskCount));
+    setMoves(0);
+    setSelectedTower(null);
+    setIsFinished(false);
+  }, [diskCount]);
+
   const handleTowerClick = (index) => {
     if (isFinished) return;
 
     if (selectedTower === null) {
       if (towers[index].length === 0) {
+
         return;
       }
       setSelectedTower(index);
@@ -44,7 +52,7 @@ export function useHanoiGame(diskCount = DEFAULT_DISK_COUNT) {
       const toTower = newTowers[toIndex];
 
       if (fromTower.length === 0) {
-        return prevTowers; 
+        return prevTowers;
       }
 
       const movingDisk = fromTower[fromTower.length - 1];
